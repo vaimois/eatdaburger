@@ -1,0 +1,47 @@
+<h1>Burgers</h1>
+
+<h2>Burgers That are NOT eaten!</h2>
+
+<table class="table">
+  {{#each daburger}}
+    {{#unless this.devoured}}
+    <tr>
+    <td>{{this.burgername}}</td> 
+     <td class="text-right">
+      <form action="/api/food/:id {{this.id}}?_method=PUT" method="POST">
+      <button type="submit" class="btn btn-danger" id="eatme">Devour this Burger!!</button>
+       </form>  
+    </tr> 
+    {{/unless}}
+  {{/each}}
+</table>
+
+<h2>Burgers that are eaten!</h2>
+
+
+  {{#each daburger}}
+    {{#if this.devoured}}
+    <tr>
+     <td>{{this.burgername}}</td>
+     
+     </tr> 
+    {{/if}}
+  {{/each}}
+
+
+<h2>Add a Burger</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  {{!-- <div class="form-group">
+    <label for="slee">Devoured?</label><br>
+    <input type="radio" name="devoured" value="1" checked> Not eaten <br>
+    <input type="radio" name="devoured" value="0"> Devoured
+  </div>
+ --}}
+  <button type="submit">Add Burger</button>
+</form>
